@@ -1,9 +1,9 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
-# import folium
-# from folium import IFrame
-# from streamlit_folium import folium_static
+import folium
+from folium import IFrame
+from streamlit_folium import folium_static
 from sys import platform
 # import rasterio
 
@@ -37,10 +37,10 @@ vid_work = {4:'устройство новых детских площадок, 
 
 
 
-# def show_mapbox_map(lat, lon): #lat, lon
-#     # Cartodb Positron - базовая карта для приложения
-#     m = folium.Map(location=[lat, lon], zoom_start=17, tiles='Cartodb Positron', max_bounds=False)
-#     return m
+def show_mapbox_map(lat, lon): #lat, lon
+    # Cartodb Positron - базовая карта для приложения
+    m = folium.Map(location=[lat, lon], zoom_start=17, tiles='Cartodb Positron', max_bounds=False)
+    return m
 
 st.set_page_config(page_title='recomendation_system', initial_sidebar_state="expanded")
 
@@ -63,12 +63,12 @@ else:
     st.subheader('Дворовая территория расположенная по адресу: ')
     st.subheader('{}'.format(select_adress))
     # start map
-#     m = show_mapbox_map(lat, lon)
-#     dwor_json = dwor.to_crs(epsg='4326').to_json()
-#     territory = folium.GeoJson(data=dwor_json, name=select_adress)
-#     territory.add_to(m)
-#     folium.LayerControl(collapsed=True, show=True).add_to(m)
-#     folium_static(m, width=850, height=400)
+    m = show_mapbox_map(lat, lon)
+    dwor_json = dwor.to_crs(epsg='4326').to_json()
+    territory = folium.GeoJson(data=dwor_json, name=select_adress)
+    territory.add_to(m)
+    folium.LayerControl(collapsed=True, show=True).add_to(m)
+    folium_static(m, width=850, height=400)
     # stop map
     # start recsys
     predictions = model.predict_proba(prepared_data[prepared_data['user_id'] == user_id])[:, 1]
