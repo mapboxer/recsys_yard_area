@@ -1,11 +1,10 @@
 import streamlit as st
 import numpy as np
-from PIL import Image
 import folium
 from folium import IFrame
 from streamlit_folium import folium_static
 from sys import platform
-# import rasterio
+
 
 from catboost import *
 import pandas as pd
