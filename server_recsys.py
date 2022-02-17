@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 # import folium
 # from folium import IFrame
-from streamlit_folium import folium_static
+# from streamlit_folium import folium_static
 from sys import platform
 # import rasterio
 
